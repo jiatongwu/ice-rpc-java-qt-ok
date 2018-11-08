@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QDataStream>
+#include <QByteArray>
 
 using namespace std;
 using namespace Demo;
@@ -13,10 +14,25 @@ main(int argc, char* argv[])
     int status = 0;
     Ice::CommunicatorPtr ic;
     try {
-        ic = Ice::initialize(argc, argv);
+
+        // Get the initialized property set.
+
+      // Ice::PropertiesPtr props = Ice::createProperties(argc, argv);
+        // Make sure that network and protocol tracing are off.
+        //
+      // props->setProperty("Ice.MessageSizeMax", "102400000");
+       // props->setProperty("Ice.Trace.Protocol", "0");
+        // Initialize a communicator with these properties.
+        //
+       // Ice::CommunicatorPtr ic = Ice::initialize(argc, argv);
+     ic = Ice::initialize(argc, argv);
+      // Ice::InitializationData data;
 
 
-        Ice::ObjectPrx base = ic->stringToProxy("TestService:default -h 192.168.12.26 -p 10000");
+
+
+
+        Ice::ObjectPrx base = ic->stringToProxy("TestService:default -h 192.168.1.185 -p 10000");
         TestServicePrx printer =TestServicePrx::checkedCast(base);
         if (!printer)
         {
@@ -30,7 +46,7 @@ main(int argc, char* argv[])
         QByteArray* qByteArray=        new QByteArray(reinterpret_cast<const char*>(result.data()), result.size());
 
 
-        QFile file("/home/wu/out.zip");
+        QFile file("/root/out.zip");
         if(!file.open(QIODevice::WriteOnly))
         { qDebug() << "Can't open file for writing"; return 0; }
         QDataStream out(&file);

@@ -2,12 +2,12 @@ HEADERS += \
     demo.h
 
 SOURCES += \
-    demo.cpp \
-    ice_client.cpp
+    ice_client.cpp \
+    demo.cpp
 
 
 
-LIBS += -L/usr/lib64/c++11 -lIce -lIceUtil
+LIBS += -lIce
 
 
 INCLUDEPATH += /usr/include/IceUtil
