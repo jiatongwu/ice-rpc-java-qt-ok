@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>com.zeroc</groupId>
 			<artifactId>ice</artifactId>
-			<version>3.6.4</version>
+			<version>3.7.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 <dependency>
